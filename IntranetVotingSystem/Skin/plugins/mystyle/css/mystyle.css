@@ -1,0 +1,9 @@
+@media screen and (max-width: 768px) {
+  .editButton {
+    display: none;
+  }
+
+  .deleteButton {
+    display: none;
+  }
+}
