@@ -78,6 +78,28 @@
             return $candidates;
         }
 
+        function getVoter($dbc1){
+            $query = "SELECT * FROM voter ORDER BY Name";
+            $pdo = $dbc1->prepare($query);
+            $pdo->execute();
+            
+            $voters = [];
+            $count = 0;
+            while($row = $pdo->fetch(PDO::FETCH_ASSOC)){
+                $voters[$count] = array(
+                    'ID' => $row['ID'],
+                    'IDNumber' => $row['IDNumber'],
+                    'Name' => $row['Name'],
+                    'Password' => $row['Password'],
+                    'HasVoted' => $row['HasVoted'],
+                );
+
+                $count++;
+            }
+
+            return $voters;
+        }
+
         function key(){
             return "KLPR-P*OE-%LED-QA!R-JJFR";
         }

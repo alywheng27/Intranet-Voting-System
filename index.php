@@ -35,6 +35,10 @@
             include 'IntranetVotingSystem/Function/candidate.php';
         }
 
+        public function voterFunction($dbc1, $dbc2) {
+            include 'IntranetVotingSystem/Function/voter.php';
+        }
+
         public function queryRepo($dbc1, $dbc2) {
             include 'IntranetVotingSystem/Function/QueryRepo/queryRepo.php';
             return $queryRepoMain;
@@ -153,6 +157,8 @@
         $main->partyFunction($dbc1, $dbc2);
     }else if(isset($_GET['candidateFunction'])){
         $main->candidateFunction($dbc1, $dbc2);
+    }else if(isset($_GET['voterFunction'])){
+        $main->voterFunction($dbc1, $dbc2);
     }
 
     // Parts

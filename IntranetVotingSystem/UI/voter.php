@@ -49,21 +49,27 @@ scratch. This page gets rid of all links and provides the needed markup only.
               <h3 class="card-title">Voter</h3>
             </div>
             <!-- /.card-header -->
+            
             <div class="card-body table-responsive">
+              <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#voter">Add Voter</button>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Remarks</th>
-                  <th>Date and Time</th>
+                  <th>ID Number</th>
+                  <th>Voter</th>
+                  <th>Has Voted?</th>
+                  <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <?php //include 'IntranetVotingSystem/UI/UIDynamics/logs.php'; ?>
+                  <?php include 'IntranetVotingSystem/UI/UIDynamics/Voter/voter.php'; ?>
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Remarks</th>
-                  <th>Date and Time</th>
+                  <th>ID Number</th>
+                  <th>Voter</th>
+                  <th>Has Voted?</th>
+                  <th>Action</th>
                 </tr>
                 </tfoot>
               </table>
@@ -93,7 +99,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!-- ./wrapper -->
 
 <?php include 'IntranetVotingSystem/UI/UIParts/modal.php' ?>
-
+<?php include 'IntranetVotingSystem/UI/UIDynamics/Voter/modal.php'; ?>
 
 <!-- REQUIRED SCRIPTS -->
 
@@ -103,9 +109,15 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="IntranetVotingSystem/Skin/plugins/bootstrap/js/bootstrap.bundle.min.js"></script>
 <!-- Select2 -->
 <script src="IntranetVotingSystem/Skin/plugins/select2/js/select2.full.min.js"></script>
+<!-- SweetAlert2 -->
+<script src="IntranetVotingSystem/Skin/plugins/sweetalert2/sweetalert2.min.js"></script>
+<!-- Toastr -->
+<script src="IntranetVotingSystem/Skin/plugins/toastr/toastr.min.js"></script>
 <!-- DataTables -->
 <script src="IntranetVotingSystem/Skin/plugins/datatables/jquery.dataTables.js"></script>
 <script src="IntranetVotingSystem/Skin/plugins/datatables-bs4/js/dataTables.bootstrap4.js"></script>
+<!-- Howler -->
+<script src="IntranetVotingSystem/Skin/plugins/howler/howler.core.js"></script>
 <!-- DataTables  & Plugins -->
 <script src="IntranetVotingSystem/Skin/plugins/datatables-responsive/js/dataTables.responsive.min.js"></script>
 <script src="IntranetVotingSystem/Skin/plugins/datatables-responsive/js/responsive.bootstrap4.min.js"></script>
@@ -117,9 +129,6 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="IntranetVotingSystem/Skin/plugins/datatables-buttons/js/buttons.html5.min.js"></script>
 <script src="IntranetVotingSystem/Skin/plugins/datatables-buttons/js/buttons.print.min.js"></script>
 <script src="IntranetVotingSystem/Skin/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
-<!-- Howler -->
-<script src="IntranetVotingSystem/Skin/plugins/howler/howler.core.js"></script>
-
 
 
 <!-- AdminLTE App -->
@@ -134,51 +143,85 @@ scratch. This page gets rid of all links and provides the needed markup only.
       "ordering": false,
       "info": true,
       "autoWidth": true,
-      "buttons": ["copy", "csv", "excel",
-      {
-        title: 'Activity Log of eRequest Document',
-        text: 'PDF',
-        extend: 'pdfHtml5',
-        message: '',
-        orientation: 'portrait',
-        exportOptions: {
-          columns: ':visible'
-        },
-        customize: function (doc) {
-          doc.pagePargins = [10, 10, 10, 10];
-          doc.defaultStyle.paddingLeft = '10%';
-          doc.defaultStyle.fontSize = 11;
-          doc.styles.tableHeader.fontSize = 11;
-          doc.styles.title.fontSize = 14;
-          doc.content[0].text = doc.content[0].text.trim();
-          //doc.content[1].table.width = ['30%'];
-          doc.content[1].table.widths = ['75%', '25%'];
-          doc['footer']= (function (page, pages) {
-            return {
-              columns: [
-                'Copyright © 2022 eRequest Document',
-                {
-                  alignment: 'right',
-                  text: ['Page ', {text: page.toString() }, ' of ', {text: pages.toString()}]
-                }
-                
-              ],
-              margin: [43, 0]
+      "buttons": [{
+          extend: 'copyHtml5',
+          exportOptions: {
+              columns: ':not(:last-child)'
+          }
+        }, 
+        {
+            extend: 'csvHtml5',
+            exportOptions: {
+                columns: ':not(:last-child)'
             }
-          });
-          
-          var objLayout = {};
-          objLayout['hLineWidth'] = function (i) { return .5; };
-          objLayout['vLineWidth'] = function (i) { return .5; };
-          objLayout['hLineColor'] = function (i) { return '#aaa'; };
-          objLayout['vLineColor'] = function (i) { return '#aaa'; };
-          objLayout['paddingLeft'] = function (i) { return 5; };
-          objLayout['paddingRight'] = function (i) { return 5; };
-          doc.content[1].layout = objLayout;
-      }
+        },
+        {
+          extend: 'excelHtml5',
+          exportOptions: {
+              columns: ':not(:last-child)'
+          }
+        },
+        {
+            extend: 'pdfHtml5',
+            exportOptions: {
+                columns: ':not(:last-child)'
+            }
+        },
+        {
+            extend: 'print',
+            exportOptions: {
+                columns: ':not(:last-child)'
+            }
+        },
+        // {
+        //     extend: 'colvis',
+        // },
+      {
       }]
     }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
   });
+</script>
+
+<script type="text/javascript">
+    $.ajax({
+      type: "get",
+      url: '?notification=true',
+      success: function(data){
+        if(data == 'VoterAdded'){
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'center',
+            showConfirmButton: false,
+            timer: 3000
+          });
+
+          toastr.success('Voter Added.');
+        }
+
+        if(data == 'VoterUpdated'){
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'center',
+            showConfirmButton: false,
+            timer: 3000
+          });
+
+          toastr.info('Voter Updated.');
+        }
+
+        if(data == 'VoterDeleted'){
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'center',
+            showConfirmButton: false,
+            timer: 3000
+          });
+
+          toastr.error('Voter Deleted.');
+        }
+
+      }
+    });
 </script>
 
 </body>

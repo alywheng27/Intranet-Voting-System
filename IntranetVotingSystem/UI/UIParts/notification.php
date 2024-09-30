@@ -44,6 +44,21 @@
             echo 'CandidateDeleted';
             unset($_SESSION['CandidateDeleted']);
         }
+
+        function displayVoterAdded(){
+            echo 'VoterAdded';
+            unset($_SESSION['VoterAdded']);
+        }
+
+        function displayVoterUpdated(){
+            echo 'VoterUpdated';
+            unset($_SESSION['VoterUpdated']);
+        }
+
+        function displayVoterDeleted(){
+            echo 'VoterDeleted';
+            unset($_SESSION['VoterDeleted']);
+        }
     }
 
     $n = new Notification();
@@ -82,5 +97,17 @@
 
     if(isset($_SESSION['CandidateDeleted'])){
         $n->displayCandidateDeleted();
+    }
+
+    if(isset($_SESSION['VoterAdded'])){
+        $n->displayVoterAdded();
+    }
+
+    if(isset($_SESSION['VoterUpdated'])){
+        $n->displayVoterUpdated();
+    }
+
+    if(isset($_SESSION['VoterDeleted'])){
+        $n->displayVoterDeleted();
     }
 ?>

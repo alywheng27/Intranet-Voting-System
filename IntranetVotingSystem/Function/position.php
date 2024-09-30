@@ -48,9 +48,11 @@
 
     $p = new Position();
 
-    $position = $_POST['position'];
-    $order = $_POST['order'];
-    $count = $_POST['count'];
+    if(!isset($_GET['deleteID'])){
+        $position = $_POST['position'];
+        $order = $_POST['order'];
+        $count = $_POST['count'];
+    }
 
     if(isset($_GET['updateID'])){
         $updateID = $_GET['updateID'];

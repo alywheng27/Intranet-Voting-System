@@ -150,3 +150,36 @@
     </div>
   </div>
 </div>
+
+<div class="modal fade" id="voter">
+  <div class="modal-dialog modal-md">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Voter</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <form role="form" id="voterQuickForm" class="form-horizontal" enctype="multipart/form-data" action="?voterFunction=true" method="post">
+          <div class="form-group">
+            <label for="idNumber">ID Number</label>
+            <input type="text" name="idNumber" id="idNumber" class="form-control" placeholder="ID Number" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="name">Name</label>
+            <input type="text" name="name" id="name" class="form-control" placeholder="Name" autocomplete="off">
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" name="password" id="password" class="form-control" placeholder="Password" autocomplete="off">
+          </div>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        <button type="submit" class="btn btn-success">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
