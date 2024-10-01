@@ -25,6 +25,10 @@
             include 'IntranetVotingSystem/UI/voter.php';
         }
 
+        public function ballot($dbc1, $dbc2, $queryRepoMain) {
+            include 'IntranetVotingSystem/UI/ballot.php';
+        }
+
         // Functions
 
         public function loginFunction($dbc1, $dbc2) {
@@ -143,6 +147,8 @@
         $main->candidate($dbc1, $dbc2, $queryRepoMain);
     }else if(isset($_GET['voter'])){
         $main->voter($dbc1, $dbc2, $queryRepoMain);
+    }else if(isset($_GET['ballot'])){
+        $main->ballot($dbc1, $dbc2, $queryRepoMain);
     }
 
     // Functions
