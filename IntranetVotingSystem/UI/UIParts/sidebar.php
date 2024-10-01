@@ -55,6 +55,13 @@
                     <p>Total Results</p>
                 </a>
             </li>
+            <li class="nav-header">CONTROL PANEL</li>
+            <li class="nav-item">
+                <a href="?result=true" class="nav-link">
+                    <i class="fas fa-user-cog nav-icon"></i>
+                    <p>Users</p>
+                </a>
+            </li>
         </ul>
         </nav>
         <!-- /.sidebar-menu -->

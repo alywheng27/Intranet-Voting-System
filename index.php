@@ -1,6 +1,10 @@
 <?php
     class main{
         // Main Pages
+        public function login($dbc1, $dbc2, $queryRepoMain) {
+            include 'IntranetVotingSystem/UI/login.php';
+        }
+
         public function dashboard($dbc1, $dbc2, $queryRepoMain) {
             include 'IntranetVotingSystem/UI/dashboard.php';
         }
@@ -22,6 +26,10 @@
         }
 
         // Functions
+
+        public function loginFunction($dbc1, $dbc2) {
+            include 'IntranetVotingSystem/Function/login.php';
+        }
 
         public function positionFunction($dbc1, $dbc2) {
             include 'IntranetVotingSystem/Function/position.php';
@@ -46,15 +54,6 @@
 
         public function notification($dbc1, $dbc2) {
             include 'IntranetVotingSystem/UI/UIParts/notification.php';
-        }
-
-    
-        public function loginUI($dbc1, $dbc2) {
-            include 'IntranetVotingSystem/UI/login.php';
-        }
-
-        public function loginFunction($dbc1, $dbc2) {
-            include 'IntranetVotingSystem/Function/loginFunction.php';
         }
 
         public function logoutFunction($dbc1, $dbc2) {
@@ -130,16 +129,12 @@
 
     $dbc1 = $main->connection1();
     $dbc2 = $main->connection2();
+
     $queryRepoMain = $main->queryRepo($dbc1, $dbc2);
 
-    // $main->checkMaintenance($dbc1, $dbc2);
-
-    //$main->queryGenerator($dbc1, $dbc2);
-
-
     // Main Pages
-    if(isset($_GET['login'])){
-        $main->loginUI($dbc1, $dbc2);
+    if(isset($_GET['dashboard'])){
+        $main->dashboard($dbc1, $dbc2, $queryRepoMain);
     }else if(isset($_GET['position'])){
         $main->position($dbc1, $dbc2, $queryRepoMain);
     }else if(isset($_GET['party'])){
@@ -151,7 +146,9 @@
     }
 
     // Functions
-    else if(isset($_GET['positionFunction'])){
+    else if(isset($_GET['loginFunction'])){
+        $main->loginFunction($dbc1, $dbc2);
+    }else if(isset($_GET['positionFunction'])){
         $main->positionFunction($dbc1, $dbc2);
     }else if(isset($_GET['partyFunction'])){
         $main->partyFunction($dbc1, $dbc2);
@@ -167,7 +164,7 @@
     }
     
     else{
-        $main->dashboard($dbc1, $dbc2, $queryRepoMain);
+        $main->login($dbc1, $dbc2, $queryRepoMain);
     }
 
 

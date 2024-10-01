@@ -59,6 +59,16 @@
             echo 'VoterDeleted';
             unset($_SESSION['VoterDeleted']);
         }
+
+        function displayInvalidCredentials(){
+            echo 'InvalidCredentials';
+            unset($_SESSION['InvalidCredentials']);
+        }
+
+        function displayIncompleteCredentials(){
+            echo 'IncompleteCredentials';
+            unset($_SESSION['IncompleteCredentials']);
+        }
     }
 
     $n = new Notification();
@@ -109,5 +119,13 @@
 
     if(isset($_SESSION['VoterDeleted'])){
         $n->displayVoterDeleted();
+    }
+
+    if(isset($_SESSION['InvalidCredentials'])){
+        $n->displayInvalidCredentials();
+    }
+
+    if(isset($_SESSION['IncompleteCredentials'])){
+        $n->displayIncompleteCredentials();
     }
 ?>
