@@ -40,10 +40,6 @@
           </div>
         </div>
       </form>
-
-      <p class="mb-1 mt-4 text-center">
-        <a href="index.php" style="color: #343a40; font-size: 14px;">Back to Request List <span class="fas fa-angle-right ml-2"></span></a>
-      </p>
     </div>
     <!-- /.card-body -->
   </div>

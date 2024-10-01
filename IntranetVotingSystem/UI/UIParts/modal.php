@@ -10,7 +10,7 @@
       <div class="modal-body">Are you sure you want to logout?</div>
       <div class="modal-footer justify-content-between">
         <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-        <a href="?logoutFunction=true" class="btn btn-danger">Logout</a>
+        <a href="index.php" class="btn btn-danger">Logout</a>
       </div>
     </div>
   </div>
