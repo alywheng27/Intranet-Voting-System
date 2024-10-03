@@ -180,7 +180,18 @@ $(document).ready(function () {
             timer: 3000
           });
 
-          toastr.error('Invalid Credentials.');
+          toastr.error('You either have Invalid Credentials or Already Voted.');
+        }
+
+        if(data == 'BallotSubmitted'){
+          const Toast = Swal.mixin({
+            toast: true,
+            position: 'center',
+            showConfirmButton: false,
+            timer: 3000
+          });
+
+          toastr.success('Ballot Submitted.');
         }
       }
     });

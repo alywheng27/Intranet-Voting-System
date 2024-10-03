@@ -44,10 +44,12 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <!-- Main content -->
     <div class="content">
       <div class="container-fluid">
-        <div class="row">
-
-        </div>
-          
+        <form role="form" id="ballotQuickForm" class="form-horizontal" enctype="multipart/form-data" action="?ballotFunction=true" method="post">
+          <?php include 'IntranetVotingSystem/UI/UIDynamics/Ballot/ballot.php'; ?>
+          <div style="display: flex; justify-content: center;">
+            <button type="submit" class="btn btn-success px-5 mb-4">Submit Ballot</button>
+          </div>
+        </form>
       </div><!-- /.container-fluid -->
     </div>
     <!-- /.content -->
@@ -103,6 +105,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
   //Initialize Select2 Elements
   $('.select2Office').select2()
 
+  <?php include 'IntranetVotingSystem/UI/UIDynamics/Ballot/dependency.php'; ?>
+
   $.ajax({
     type: "get",
     url: "?officeList=true",
@@ -116,143 +120,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 </script>
 
 <script>
-  // Ratings
-  $(document).ready(function() {
-    $.ajax({
-      url: '?ratingList=true',
-      success: function(data){
-        if(data != ''){
-        
-          var data = data.split(",");
-          
-          var rate5 = Array();
-          var rate4 = Array();
-          var rate3 = Array();
-          var rate2 = Array();
-          var rate1 = Array();
-          
-          var count = 0
-          for (let index = 0; index < 5; index++) {
-            rate5[count] = data[index];
-            document.getElementById(`rate${index}`).innerHTML = data[index];
-            count++;
-          }
 
-          var count = 0
-          for (let index = 5; index < 10; index++) {
-            rate4[count] = data[index];
-            document.getElementById(`rate${index}`).innerHTML = data[index];
-            count++;
-          }
-
-          var count = 0
-          for (let index = 10; index < 15; index++) {
-            rate3[count] = data[index];
-            document.getElementById(`rate${index}`).innerHTML = data[index];
-            count++;
-          }
-
-          var count = 0
-          for (let index = 15; index < 20; index++) {
-            rate2[count] = data[index];
-            document.getElementById(`rate${index}`).innerHTML = data[index];
-            count++;
-          }
-
-          var count = 0
-          for (let index = 20; index < 25; index++) {
-            rate1[count] = data[index];
-            document.getElementById(`rate${index}`).innerHTML = data[index];
-            count++;
-          }
-
-          var areaChartData = {
-            labels  : ['Job Knowledge', 'Work Quality', 'Availability of Personnel', 'Attitude and Cooperation', 'Dependability/Efficiency'],
-            datasets: [
-              {
-                label               : '5 Stars',
-                backgroundColor     : '#ab46d2',
-                borderColor         : '#ab46d2',
-                pointRadius          : false,
-                pointColor          : '#c1c7d1',
-                pointStrokeColor    : 'rgba(205,180,219,1)',
-                pointHighlightFill  : '#fff',
-                pointHighlightStroke: 'rgba(205,180,219,1)',
-                data                : rate5
-              },
-              {
-                label               : '4 Stars',
-                backgroundColor     : '#ff6fb5',
-                borderColor         : '#ff6fb5',
-                pointRadius         : false,
-                pointColor          : 'rgba(255,200,221, 1)',
-                pointStrokeColor    : '#c1c7d1',
-                pointHighlightFill  : '#fff',
-                pointHighlightStroke: 'rgba(220,220,220,1)',
-                data                : rate4
-              },
-              {
-                label               : '3 Stars',
-                backgroundColor     : '#92d9f7',
-                borderColor         : '#92d9f7',
-                pointRadius         : false,
-                pointColor          : 'rgba(250,170,199, 1)',
-                pointStrokeColor    : '#c1c7d1',
-                pointHighlightFill  : '#fff',
-                pointHighlightStroke: 'rgba(250,170,199,1)',
-                data                : rate3
-              },
-              {
-                label               : '2 Stars',
-                backgroundColor     : '#55d8c1',
-                borderColor         : '#55d8c1',
-                pointRadius         : false,
-                pointColor          : 'rgba(190,226,255, 1)',
-                pointStrokeColor    : '#c1c7d1',
-                pointHighlightFill  : '#fff',
-                pointHighlightStroke: 'rgba(190,226,255,1)',
-                data                : rate2
-              },
-              {
-                label               : '1 Star',
-                backgroundColor     : '#fcf69c',
-                borderColor         : '#fcf69c',
-                pointRadius         : false,
-                pointColor          : 'rgba(162,210,255, 1)',
-                pointStrokeColor    : '#c1c7d1',
-                pointHighlightFill  : '#fff',
-                pointHighlightStroke: 'rgba(162,210,255,1)',
-                data                : rate1
-              },
-            ]
-          }
-
-          var barChartCanvas = $('#barChart').get(0).getContext('2d')
-          var barChartData = $.extend(true, {}, areaChartData)
-          // var temp0 = areaChartData.datasets[0]
-          // var temp1 = areaChartData.datasets[1]
-          // barChartData.datasets[0] = temp0
-          // barChartData.datasets[1] = temp1
-
-          var barChartOptions = {
-            responsive              : true,
-            maintainAspectRatio     : false,
-            datasetFill             : false,
-            plugins: {
-              labels: [],
-            },
-          }
-
-          new Chart(barChartCanvas, {
-            type: 'bar',
-            data: barChartData,
-            options: barChartOptions
-          })
-
-        }
-      }
-    });
-  })
 </script>
 
 </body>

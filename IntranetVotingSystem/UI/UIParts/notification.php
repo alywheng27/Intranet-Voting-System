@@ -69,6 +69,11 @@
             echo 'IncompleteCredentials';
             unset($_SESSION['IncompleteCredentials']);
         }
+
+        function displayBallotSubmitted(){
+            echo 'BallotSubmitted';
+            unset($_SESSION['BallotSubmitted']);
+        }
     }
 
     $n = new Notification();
@@ -127,5 +132,9 @@
 
     if(isset($_SESSION['IncompleteCredentials'])){
         $n->displayIncompleteCredentials();
+    }
+
+    if(isset($_SESSION['BallotSubmitted'])){
+        $n->displayBallotSubmitted();
     }
 ?>

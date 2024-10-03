@@ -51,6 +51,10 @@
             include 'IntranetVotingSystem/Function/voter.php';
         }
 
+        public function ballotFunction($dbc1, $dbc2, $queryRepoMain) {
+            include 'IntranetVotingSystem/Function/ballot.php';
+        }
+
         public function queryRepo($dbc1, $dbc2) {
             include 'IntranetVotingSystem/Function/QueryRepo/queryRepo.php';
             return $queryRepoMain;
@@ -162,6 +166,8 @@
         $main->candidateFunction($dbc1, $dbc2);
     }else if(isset($_GET['voterFunction'])){
         $main->voterFunction($dbc1, $dbc2);
+    }else if(isset($_GET['ballotFunction'])){
+        $main->ballotFunction($dbc1, $dbc2, $queryRepoMain);
     }
 
     // Parts

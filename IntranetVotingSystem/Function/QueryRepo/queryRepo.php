@@ -5,7 +5,7 @@
             if($id != NULL) {
                 $query = $query . " WHERE ID = :id";
             }
-            $query = $query . " ORDER BY Decree, Count";
+            $query = $query . " ORDER BY Decree";
             $pdo = $dbc1->prepare($query);
             if($id != NULL) {
                 $pdo->bindParam(':id', $id);
@@ -56,7 +56,7 @@
         }
 
         function getCandidate($dbc1){
-            $query = "SELECT * FROM candidate ORDER BY Name";
+            $query = "SELECT * FROM candidateview;";
             $pdo = $dbc1->prepare($query);
             $pdo->execute();
             

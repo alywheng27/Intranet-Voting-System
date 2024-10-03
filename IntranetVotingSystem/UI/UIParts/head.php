@@ -23,7 +23,7 @@ if(isset($_GET['login'])){
 <meta http-equiv="Pragma" content="no-cache" />
 <meta http-equiv="Expires" content="-1" />
 
-<link href="IntranetVotingSystem/Skin/dist/img/hr_logo.webp" rel="shortcut icon" type="image/x-icon" />
+<link href="IntranetVotingSystem/Skin/dist/img/logo.jpg" rel="shortcut icon" type="image/x-icon" />
 
 <!-- Font Awesome Icons -->
 <link rel="stylesheet" href="IntranetVotingSystem/Skin/plugins/fontawesome-free/css/all.min.css">

@@ -11,6 +11,50 @@
 .background-img {
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
   background-position: center;
+}
+
+.candidate-card {
+  color: rgb(212, 212, 212);
+}
+
+.candidate-card:hover {
+  border: 5px solid #1e7e34;
+  color: white;
+}
+
+/* HIDE RADIO */
+[type=radio] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+[type=checkbox] { 
+  position: absolute;
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* IMAGE STYLES */
+[type=radio] + label {
+  cursor: pointer;
+}
+
+[type=checkbox] + label {
+  cursor: pointer;
+}
+
+/* CHECKED STYLES */
+[type=radio]:checked + label {
+  border: 5px solid #d39e00;
+  color: white;
+}
+
+/* CHECKED STYLES */
+[type=checkbox]:checked + label {
+  border: 5px solid #d39e00;
+  color: white;
 }
