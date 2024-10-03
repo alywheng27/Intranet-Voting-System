@@ -5,7 +5,6 @@
 </head>
 <body class="hold-transition login-page background-img" style="background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('IntranetVotingSystem/Skin/dist/img/login-background.jpg');">
 <div class="login-box">
-  <!-- /.login-logo -->
   <div class="card card-outline card-success">
     <div class="card-header text-center">
       <a href="../../index2.html" class="h1"><b>Intranet Voting System</b></a>
@@ -41,13 +40,8 @@
         </div>
       </form>
     </div>
-    <!-- /.card-body -->
   </div>
-  <!-- /.card -->
 </div>
-<!-- /.login-box -->
-
-<!------------------  LOGIN  ---------------------- -->
 
 <!-- jQuery -->
 <script src="IntranetVotingSystem/Skin/plugins/jquery/jquery.min.js"></script>

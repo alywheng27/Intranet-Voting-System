@@ -104,9 +104,6 @@
             return "KLPR-P*OE-%LED-QA!R-JJFR";
         }
 
-        //  GETDATE()
-        //  DateActive <= DATEADD(MINUTE, -5, GETDATE())
-
     }
 
     $queryRepoMain = new QueryRepo();
