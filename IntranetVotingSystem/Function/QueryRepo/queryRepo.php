@@ -100,6 +100,28 @@
             return $voters;
         }
 
+        function getUser($dbc1){
+            $query = "SELECT * FROM user ORDER BY FirstName";
+            $pdo = $dbc1->prepare($query);
+            $pdo->execute();
+            
+            $users = [];
+            $count = 0;
+            while($row = $pdo->fetch(PDO::FETCH_ASSOC)){
+                $users[$count] = array(
+                    'ID' => $row['ID'],
+                    'FirstName' => $row['FirstName'],
+                    'Surname' => $row['Surname'],
+                    'Username' => $row['Username'],
+                    'Password' => $row['Password'],
+                );
+
+                $count++;
+            }
+
+            return $users;
+        }
+
         function key(){
             return "KLPR-P*OE-%LED-QA!R-JJFR";
         }

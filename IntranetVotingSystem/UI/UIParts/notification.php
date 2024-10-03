@@ -74,6 +74,21 @@
             echo 'BallotSubmitted';
             unset($_SESSION['BallotSubmitted']);
         }
+
+        function displayUserAdded(){
+            echo 'UserAdded';
+            unset($_SESSION['UserAdded']);
+        }
+
+        function displayUserUpdated(){
+            echo 'UserUpdated';
+            unset($_SESSION['UserUpdated']);
+        }
+
+        function displayUserDeleted(){
+            echo 'UserDeleted';
+            unset($_SESSION['UserDeleted']);
+        }
     }
 
     $n = new Notification();
@@ -136,5 +151,17 @@
 
     if(isset($_SESSION['BallotSubmitted'])){
         $n->displayBallotSubmitted();
+    }
+
+    if(isset($_SESSION['UserAdded'])){
+        $n->displayUserAdded();
+    }
+
+    if(isset($_SESSION['UserUpdated'])){
+        $n->displayUserUpdated();
+    }
+
+    if(isset($_SESSION['UserDeleted'])){
+        $n->displayUserDeleted();
     }
 ?>

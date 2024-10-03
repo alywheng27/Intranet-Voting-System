@@ -24,6 +24,10 @@
         public function voter($dbc1, $dbc2, $queryRepoMain) {
             include 'IntranetVotingSystem/UI/voter.php';
         }
+        
+        public function User($dbc1, $dbc2, $queryRepoMain) {
+            include 'IntranetVotingSystem/UI/user.php';
+        }
 
         public function ballot($dbc1, $dbc2, $queryRepoMain) {
             include 'IntranetVotingSystem/UI/ballot.php';
@@ -45,6 +49,10 @@
 
         public function candidateFunction($dbc1, $dbc2) {
             include 'IntranetVotingSystem/Function/candidate.php';
+        }
+
+        public function userFunction($dbc1, $dbc2) {
+            include 'IntranetVotingSystem/Function/user.php';
         }
 
         public function voterFunction($dbc1, $dbc2) {
@@ -153,6 +161,8 @@
         $main->voter($dbc1, $dbc2, $queryRepoMain);
     }else if(isset($_GET['ballot'])){
         $main->ballot($dbc1, $dbc2, $queryRepoMain);
+    }else if(isset($_GET['user'])){
+        $main->user($dbc1, $dbc2, $queryRepoMain);
     }
 
     // Functions
@@ -166,9 +176,12 @@
         $main->candidateFunction($dbc1, $dbc2);
     }else if(isset($_GET['voterFunction'])){
         $main->voterFunction($dbc1, $dbc2);
+    }else if(isset($_GET['userFunction'])){
+        $main->userFunction($dbc1, $dbc2);
     }else if(isset($_GET['ballotFunction'])){
         $main->ballotFunction($dbc1, $dbc2, $queryRepoMain);
     }
+
 
     // Parts
     else if(isset($_GET['notification'])){

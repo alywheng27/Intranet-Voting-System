@@ -33,28 +33,28 @@
       <div class="container-fluid">
       <div class="card">
             <div class="card-header">
-              <h3 class="card-title">Position</h3>
+              <h3 class="card-title">User</h3>
             </div>
             
             <div class="card-body table-responsive">
-              <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#position">Add Position</button>
+              <button type="button" class="btn btn-success mb-3" data-toggle="modal" data-target="#user">Add User</button>
               <table id="example1" class="table table-bordered table-striped">
                 <thead>
                 <tr>
-                  <th>Position</th>
-                  <th>Order</th>
-                  <th>Count</th>
+                  <th>First Name</th>
+                  <th>Surname</th>
+                  <th>Username</th>
                   <th>Action</th>
                 </tr>
                 </thead>
                 <tbody>
-                  <?php include 'IntranetVotingSystem/UI/UIDynamics/Position/position.php'; ?>
+                  <?php include 'IntranetVotingSystem/UI/UIDynamics/User/user.php'; ?>
                 </tbody>
                 <tfoot>
                 <tr>
-                  <th>Position</th>
-                  <th>Order</th>
-                  <th>Count</th>
+                  <th>First Name</th>
+                  <th>Surname</th>
+                  <th>Username</th>
                   <th>Action</th>
                 </tr>
                 </tfoot>
@@ -76,7 +76,7 @@
 </div>
 
 <?php include 'IntranetVotingSystem/UI/UIParts/modal.php' ?>
-<?php include 'IntranetVotingSystem/UI/UIDynamics/Position/modal.php'; ?>
+<?php include 'IntranetVotingSystem/UI/UIDynamics/User/modal.php'; ?>
 
 <!-- REQUIRED SCRIPTS -->
 
@@ -110,21 +110,6 @@
 
 <!-- AdminLTE App -->
 <script src="IntranetVotingSystem/Skin/dist/js/adminlte.min.js"></script>
-
-<script>
-  //Initialize Select2 Elements
-  $('.select2Order').select2()
-    
-  //Initialize Select2 Elements
-  $('.select2Count').select2()
-
-  <?php include 'IntranetVotingSystem/UI/UIDynamics/Position/dependency.php'; ?>
-
-  //Initialize Select2 Elements
-  $('.select2bs4').select2({
-      theme: 'bootstrap4'
-  })
-</script>
 
 <script>
   $(function () {
@@ -179,7 +164,7 @@
       type: "get",
       url: '?notification=true',
       success: function(data){
-        if(data == 'PositionAdded'){
+        if(data == 'UserAdded'){
           const Toast = Swal.mixin({
             toast: true,
             position: 'center',
@@ -187,10 +172,10 @@
             timer: 3000
           });
 
-          toastr.success('Position Added.');
+          toastr.success('User Added.');
         }
 
-        if(data == 'PositionUpdated'){
+        if(data == 'UserUpdated'){
           const Toast = Swal.mixin({
             toast: true,
             position: 'center',
@@ -198,10 +183,10 @@
             timer: 3000
           });
 
-          toastr.info('Position Updated.');
+          toastr.info('User Updated.');
         }
 
-        if(data == 'PositionDeleted'){
+        if(data == 'UserDeleted'){
           const Toast = Swal.mixin({
             toast: true,
             position: 'center',
@@ -209,7 +194,7 @@
             timer: 3000
           });
 
-          toastr.error('Position Deleted.');
+          toastr.error('User Deleted.');
         }
 
       }
