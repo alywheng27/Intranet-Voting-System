@@ -10,11 +10,11 @@
 
   <?php include 'IntranetVotingSystem/UI/UIParts/navbar.php' ?>
 
-  <?php include 'IntranetVotingSystem/UI/UIParts/sidebar.php' ?>
+  <?php // include 'IntranetVotingSystem/UI/UIParts/sidebar.php' ?>
 
-  <div class="content-wrapper">
+  <!-- <div class="content-wrapper"> -->
     <div class="content-header">
-      <div class="container-fluid">
+      <div class="container">
         <div class="row mb-2">
           <div class="col-sm-6">
             Ballot
@@ -29,7 +29,7 @@
     </div>
 
     <div class="content">
-      <div class="container-fluid">
+      <div class="container">
         <form role="form" id="ballotQuickForm" class="form-horizontal" enctype="multipart/form-data" action="?ballotFunction=true" method="post">
           <?php include 'IntranetVotingSystem/UI/UIDynamics/Ballot/ballot.php'; ?>
           <div style="display: flex; justify-content: center;">
@@ -38,7 +38,7 @@
         </form>
       </div>
     </div>
-  </div>
+  <!-- </div> -->
 
   <aside class="control-sidebar control-sidebar-dark">
     <div class="p-3">
