@@ -1,7 +1,7 @@
 <?php
     class BallotDependency extends QueryRepo{
         function installBallotDependency($dbc1){
-            $candidates = $this->getCandidate($dbc1);
+            $candidates = $this->getCandidate($dbc1, NULL, NULL);
 
             $positionHolder = NULL;
             foreach ($candidates as $candidate) {

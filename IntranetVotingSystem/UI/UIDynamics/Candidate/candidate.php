@@ -1,7 +1,7 @@
 <?php
     class Candidate extends QueryRepo{
         function displayCandidate($dbc1){
-            $candidates = $this->getCandidate($dbc1);
+            $candidates = $this->getCandidate($dbc1, NULL, NULL);
 
             foreach ($candidates as $candidate) {
                 $position = $this->getPosition($dbc1, $candidate['PositionID']);

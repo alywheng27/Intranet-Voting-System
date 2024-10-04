@@ -1,7 +1,7 @@
 <?php
     class CandidateDependency extends QueryRepo{
         function installCandidateDependency($dbc1){
-            $candidates = $this->getCandidate($dbc1);
+            $candidates = $this->getCandidate($dbc1, NULL, NULL);
 
             foreach ($candidates as $candidate) {
                 echo '

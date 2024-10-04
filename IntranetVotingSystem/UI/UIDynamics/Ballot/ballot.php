@@ -1,7 +1,7 @@
 <?php
     class Ballot extends QueryRepo{
         function displayBallot($dbc1){
-            $candidates = $this->getCandidate($dbc1);
+            $candidates = $this->getCandidate($dbc1, NULL, NULL);
 
             $positionHolder = NULL;
             $endDiv = FALSE;

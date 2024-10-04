@@ -1,7 +1,7 @@
 <?php
     class CandidateModal extends QueryRepo{
         function displayCandidateModal($dbc1){
-            $candidates = $this->getCandidate($dbc1);
+            $candidates = $this->getCandidate($dbc1, NULL, NULL);
 
             foreach ($candidates as $candidate) {
                 echo '

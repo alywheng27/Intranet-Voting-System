@@ -59,6 +59,8 @@
             $query = "SELECT * FROM candidateview ";
             if($positionID != NULL AND $count != NULL) {
                 $query = $query . " WHERE PositionID = :positionID ORDER BY Vote DESC, Name limit $count ";
+            }else {
+                $query = $query . " ORDER BY Decree, Vote DESC, Name";
             }
             $pdo = $dbc1->prepare($query);
             if($positionID != NULL AND $count != NULL) {
