@@ -130,6 +130,46 @@
             return $users;
         }
 
+        function getTableTotalRowCount($dbc1) {
+            $query = "SELECT * FROM tablestotalrowcountview ";
+            $pdo = $dbc1->prepare($query);
+            $pdo->execute();
+            
+            $total = [];
+            $count = 0;
+            while($row = $pdo->fetch(PDO::FETCH_ASSOC)){
+                $total[$count] = array(
+                    'PositionCount' => $row['PositionCount'],
+                    'PartyCount' => $row['PartyCount'],
+                    'CandidateCount' => $row['CandidateCount'],
+                    'VoterCount' => $row['VoterCount'],
+                );
+
+                $count++;
+            }
+
+            return $total;
+        }
+
+        function getParticipant($dbc1) {
+            $query = "SELECT * FROM participantview ";
+            $pdo = $dbc1->prepare($query);
+            $pdo->execute();
+            
+            $participants = [];
+            $count = 0;
+            while($row = $pdo->fetch(PDO::FETCH_ASSOC)){
+                $participants[$count] = array(
+                    'VoterCount' => $row['VoterCount'],
+                    'NonVoterCount' => $row['NonVoterCount'],
+                );
+
+                $count++;
+            }
+
+            return $participants;
+        }
+
         function key(){
             return "KLPR-P*OE-%LED-QA!R-JJFR";
         }

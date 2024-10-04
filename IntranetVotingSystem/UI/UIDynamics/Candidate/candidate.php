@@ -12,7 +12,7 @@
                         <td>'.$candidate['Name'].'</td>
                         <td>'.$position[0]['Name'].'</td>
                         <td>'.$party[0]['Name'].'</td>
-                        <td>
+                        <td style="display: flex; column-gap: 5px;">
                             <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#edit'.$candidate['ID'].'"><i class="fas fa-edit nav-icon"></i><span class="ml-2 editButton">Edit</span></button>
                             <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#delete'.$candidate['ID'].'"><i class="fas fa-trash nav-icon"></i><span class="ml-2 deleteButton"> Delete</span></button>
                         </td>

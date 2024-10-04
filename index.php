@@ -76,6 +76,16 @@
             return $queryRepoMain;
         }
 
+        // Dynamics
+
+        function tableTotalRowCount($dbc1, $dbc2 ,$queryRepoMain) {
+            include 'IntranetVotingSystem/UI/UIDynamics/tableTotalRowCount.php';
+        }
+
+        function participant($dbc1, $dbc2, $queryRepoMain) {
+            include 'IntranetVotingSystem/UI/UIDynamics/participant.php';
+        }
+
         public function notification($dbc1, $dbc2) {
             include 'IntranetVotingSystem/UI/UIParts/notification.php';
         }
@@ -192,6 +202,13 @@
         $main->userFunction($dbc1, $dbc2);
     }else if(isset($_GET['ballotFunction'])){
         $main->ballotFunction($dbc1, $dbc2, $queryRepoMain);
+    }
+
+    // Dynamics
+    else if(isset($_GET['tableTotalRowCount'])){
+        $main->tableTotalRowCount($dbc1, $dbc2, $queryRepoMain);
+    }else if(isset($_GET['participant'])){
+        $main->participant($dbc1, $dbc2, $queryRepoMain);
     }
 
 
