@@ -55,9 +55,15 @@
             return $parties;
         }
 
-        function getCandidate($dbc1){
-            $query = "SELECT * FROM candidateview;";
+        function getCandidate($dbc1, $positionID, $count){
+            $query = "SELECT * FROM candidateview ";
+            if($positionID != NULL AND $count != NULL) {
+                $query = $query . " WHERE PositionID = :positionID ORDER BY Vote DESC, Name limit $count ";
+            }
             $pdo = $dbc1->prepare($query);
+            if($positionID != NULL AND $count != NULL) {
+                $pdo->bindParam(':positionID', $positionID);
+            }
             $pdo->execute();
             
             $candidates = [];
