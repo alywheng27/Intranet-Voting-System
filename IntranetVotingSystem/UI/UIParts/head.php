@@ -2,17 +2,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="x-ua-compatible" content="ie=edge">
 
-<?php
-if(isset($_GET['login'])){
-    echo '
-        <title>Intranet Voting System | Login</title>
-    ';
-}else{
-    echo '
-        <title>Intranet Voting System | Home</title>
-    ';
-}
-?>
+<title>Intranet Voting System</title>
 
 <!-- Tell the browser to be responsive to screen width -->
 <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
