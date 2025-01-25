@@ -17,7 +17,13 @@
                     if($position[0]['Name'] != $positionHolder){
                         $positionHolder = $position[0]['Name'];
                         $endDiv = TRUE;
-                        echo '<h1 class="text-center mb-3">'.$positionHolder.'</h1>';
+                        if($positionHolder == 'Sergeant at Arms'){
+                            echo '<h1 class="text-center mb-3">'.$positionHolder.'</h1> <p><strong>Up to 2 Votes</strong></p>';
+                        }else if($positionHolder == 'Board Of Directors') {
+                            echo '<h1 class="text-center mb-3">'.$positionHolder.'</h1> <p><strong>Up to 8 Votes</strong></p>';
+                        }else {
+                            echo '<h1 class="text-center mb-3">'.$positionHolder.'</h1>';
+                        }
                         echo '<div class="mb-5" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); column-gap: 15px;">';
                     }
 

@@ -190,7 +190,7 @@
               datasets: [
                 {
                   data: data,
-                  backgroundColor : ['#809bce', '#95b8d1'],
+                  backgroundColor : ['#809bce', '#ffc107'],
                 }
               ]
             }
@@ -243,7 +243,7 @@
             datasets: [
               {
                 label               : 'Total Count',
-                backgroundColor     : 'rgba(205,180,219,0.9)',
+                backgroundColor     : '#dc3545',
                 borderColor         : 'rgba(205,180,219,0.8)',
                 pointRadius          : false,
                 pointColor          : '#c1c7d1',
